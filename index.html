@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - Dr. Galvez Dentistry</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f8fb; 
+            color: #333;
+        }
+
+        header {
+            background: #007acc; 
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffdd57;
+        }
+
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .menu-btn {
+            background: #007acc;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            background: #005b99;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: #007acc;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .menu-content button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            width: 100%;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .menu-content button:hover {
+            background: #005b99;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            color: white; 
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .form-group button {
+            background-color: #007acc; 
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #005b99;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #007acc;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-top: 5px solid #005b99; 
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: #f4f8fb;
+        }
+
+        .dark-mode header {
+            background: #222;
+        }
+
+        .dark-mode .form-container {
+            background: #444;
+            border: 1px solid #555;
+        }
+
+        .dark-mode .form-group input, .dark-mode .form-group textarea {
+            border: 1px solid #555;
+            background: #666;
+            color: #f4f8fb;
+        }
+
+        .dark-mode .form-group button {
+            background-color: #444;
+            color: #f4f8fb;
+        }
+
+        .dark-mode footer {
+            background: #222;
+            border-top: 5px solid #444;
+        }
+
+        .custom-mode {
+            background-color: #e0f7fa;
+            color: #007acc;
+        }
+
+        .custom-mode header {
+            background: #007acc;
+        }
+
+        .custom-mode .form-container {
+            background: #b3e5fc;
+            border: 1px solid #81d4fa;
+        }
+
+        .custom-mode .form-group input, .custom-mode .form-group textarea {
+            border: 1px solid #81d4fa;
+            background: #e1f5fe;
+            color: #007acc;
+        }
+
+        .custom-mode .form-group button {
+            background-color: #007acc;
+            color: #fff;
+        }
+
+        .custom-mode footer {
+            background: #007acc;
+            border-top: 5px solid #81d4fa;
+        }
+
+        .tooth-arrow {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #007acc;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .tooth-arrow:hover {
+            transform: scale(1.1);
+        }
+
+        .tooth-arrow::before {
+            content: '🦷';
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: row; /* Ensure the links stay in a row */
+                gap: 10px; /* Maintain spacing between links */
+                top: 20px; /* Adjust if needed */
+                left: 20px; /* Adjust if needed */
+            }
+
+            .menu {
+                top: 20px; /* Adjust if needed */
+                right: 20px; /* Adjust if needed */
+            }
+
+            .menu-content {
+                top: 30px; /* Adjust if needed */
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dr. Galvez Dentistry</h1>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="menu">
+            <button class="menu-btn">Mode</button>
+            <div class="menu-content">
+                <button id="light-mode">Light Mode</button>
+                <button id="dark-mode">Dark Mode</button>
+                <button id="custom-mode">Custom Mode</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <h2>Book an Appointment</h2>
+        <form action="thank_you.html" method="post">
+            <div class="form-group">
+                <label for="appointment-type">Appointment Type:</label>
+                <select id="appointment-type" name="appointment-type" required>
+                    <option value="">Select Appointment Type</option>
+                    <option value="checkup">Check-up</option>
+                    <option value="emergency">Emergency Visit</option>
+                    <option value="cosmetic">Cosmetic Consultation</option>
+                    <option value="online">Online Consultation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Preferred Time:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Additional Information:</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>2024 Dr. Galvez Dentistry | All Rights Reserved</p>
+    </footer>
+
+    <div class="tooth-arrow" onclick="scrollToTop()"></div>
+
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            const menuContent = document.querySelector('.menu-content');
+            menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('light-mode').addEventListener('click', function() {
+            document.body.className = '';
+            localStorage.setItem('theme', 'light');
+        });
+
+        document.getElementById('dark-mode').addEventListener('click', function() {
+            document.body.className = 'dark-mode';
+            localStorage.setItem('theme', 'dark');
+        });
+
+        document.getElementById('custom-mode').addEventListener('click', function() {
+            document.body.className = 'custom-mode';
+            localStorage.setItem('theme', 'custom');
+        });
+
+        window.addEventListener('load', function() {
+            const theme = localStorage.getItem('theme');
+            if (theme) {
+                document.body.className = theme + '-mode';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Smile Dentistry - About</title>
+    <style>
+        /* Base Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f8fb; /* Light mode background */
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #007acc; /* Header color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        nav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px; /* Matching font size */
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffdd57;
+        }
+
+        main.content {
+            flex: 1;
+            padding: 50px 20px;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: inherit; /* Ensure main content inherits background */
+        }
+
+        .content h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.5;
+        }
+
+        .team {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            background-color: inherit; /* Ensure background matches */
+            padding: 0; /* Remove padding to fit content */
+        }
+
+        .team div {
+            width: 250px;
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: inherit; /* Match background color */
+            border: 5px solid transparent; /* Transparent border to avoid color spill */
+        }
+
+        .team img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        footer {
+            background-color: #007acc; /* Footer color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-top: 5px solid #005b99;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #333;
+            color: #f4f8fb;
+        }
+
+        body.dark-mode header, body.dark-mode footer {
+            background-color: #222;
+        }
+
+        body.dark-mode nav a {
+            color: #f4f8fb;
+        }
+
+        body.dark-mode .content h2 {
+            color: #f4f8fb;
+        }
+
+        body.dark-mode .team {
+            background-color: #333; /* Dark mode background */
+        }
+
+        body.dark-mode .team div {
+            border: 5px solid #444;
+        }
+
+        body.dark-mode footer {
+            border-top: 5px solid #444;
+        }
+
+        /* Custom Mode Styles */
+        body.custom-mode {
+            background-color: #e0f7fa;
+            color: #007acc;
+        }
+
+        body.custom-mode header, body.custom-mode footer {
+            background-color: #007acc;
+        }
+
+        body.custom-mode nav a {
+            color: #007acc;
+        }
+
+        body.custom-mode .team div {
+            border: 5px solid #81d4fa;
+        }
+
+        body.custom-mode footer {
+            border-top: 5px solid #81d4fa;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .content h2 {
+                font-size: 2em;
+            }
+
+            .content p {
+                font-size: 1em;
+            }
+
+            .team {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team div {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Me</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <h2>About Me</h2>
+        <p>Hello! I am Rexjohn Derayal, a 22-year-old second-year BSIT student. This website has been influenced by my girlfriend, who is studying dentistry.</p>
+        <p>Her hard work served as an inspiration for me to incorporate elements from the world of dental studies into the design of this site.</p>
+        <p>Below, I've included images of me and my girlfriend.</p>
+
+        <div class="team">
+            <div><img src="gf.jpg" alt="Rexjohn Derayal"></div>
+            <div><img src="gff.jpg" alt="Ivan Nicole Galvez"></div>
+            <div><img src="gfff.jpg" alt="Ivan Nicole Galvez"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Dr. Galvez Dentistry | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Apply mode based on localStorage
+        function applyMode(mode) {
+            document.body.className = mode;
+        }
+
+        // Retain the selected mode on page load
+        const savedMode = localStorage.getItem('selectedMode');
+        if (savedMode) {
+            applyMode(savedMode);
+        }
+
+        // Example toggle function for testing purposes
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'd') {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('selectedMode', 'dark-mode');
+            } else if (event.key === 'l') {
+                document.body.classList.toggle('custom-mode');
+                localStorage.setItem('selectedMode', 'custom-mode');
+            }
+        });
+    </script>
+</body>
+</html>
